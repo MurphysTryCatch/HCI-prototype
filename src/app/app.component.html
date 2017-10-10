@@ -1,18 +1,25 @@
 <clr-main-container>
-  <clr-header>
+<header class="header-2">
     <div class="branding">
-      <a href="#" class="nav-link">
-        <span class="clr-icon clr-clarity-logo"></span>
-        <span class="title">Clarity</span>
-      </a>
+      <span class="title">Maturin's</span>
     </div>
-      <div class="header-nav" [clr-nav-level]="1">
-          <a class="nav-link" href="#" [routerLink]="['/home']" routerLinkActive="active"><span class="nav-text">Home</span></a>
-          <a class="nav-link" href="#" [routerLink]="['/about']" routerLinkActive="active"><span class="nav-text">About</span></a>
-      </div>
+    <div class="header-nav">
+    </div>
     <div class="header-actions">
+        <a href="javascript://" class="nav-link nav-icon">
+          <clr-icon shape="shopping-cart" class="is-solid has-outline"></clr-icon>
+        </a>
+        <a href="javascript://" class="nav-link">
+          <span class="nav-text">Guest</span>
+        </a>
+        <a href="javascript://" class="nav-link nav-icon">
+          <clr-icon shape="user" class="is-solid has-outline"></clr-icon>
+        </a>
+
+
+
     </div>
-  </clr-header>
+</header>
   <div class="content-container">
     <div class="content-area">
       <router-outlet></router-outlet>
