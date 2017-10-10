@@ -1,4 +1,4 @@
-![Clarity](logo.png)
+[Clarity](logo.png)
 
 Clarity Seed
 ============
@@ -119,3 +119,4 @@ The clarity-seed project is licensed under the MIT license.
 ## Feedback
 
 If you find a bug or want to request a new feature, please open a [GitHub issue](https://github.com/vmware/clarity-seed/issues).
+=======
