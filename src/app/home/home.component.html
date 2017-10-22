@@ -3,11 +3,62 @@
   ~ This software is released under MIT license.
   ~ The full license information can be found in LICENSE in the root directory of this project.
   -->
-<h2>Welcome to Maturin's</h2>
-
-<form class="search">
-  <label for="search_input">
-      <input id="search_input" type="text" placeholder="Search for keywords...">
-  </label>
-  <clr-icon shape="search"></clr-icon>
-</form>
+<h2 style="display:block; text-align:center;">Welcome to Maturin's</h2>
+<div style="margin:auto; width: 50%;">
+  <form class="search" style="position:relative; height: 200px;">
+    <label for="search_input" style="position: absolute; bottom: 0px;">
+        <input id="search_input" type="text" placeholder="" style="width:500px;">
+    </label>
+    <clr-icon shape="search" style="position: absolute; bottom:0px; right: 30px;"></clr-icon>
+  </form>
+</div>
+<div class="row flex-items-xs-around">
+  <imagesGrid *ngFor="let grid of grids" [title]="grid"></imagesGrid>
+<!--
+  <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" *ngFor="let g of Grids">
+  </div>
+  
+        <div class="card">
+            <div class="card-block">
+                <h3 class="card-title">Track Purchases</h3>
+                <div class="row">
+                  <div class="col-xs">
+                      <img src="../images/hu-friedy-miller-bone-file-21.jpg">
+                  </div>
+                  <div class="col-xs">
+                      <span>1/2</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs">
+                    <span>1/2</span>
+                  </div>
+                  <div class="col-xs">
+                    <span>1/2</span>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-block">
+                <h3 class="card-title">Recent Searches</h3>
+                <p class="card-text">
+                    ...
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="card-block">
+                <h3 class="card-title">Search Suggestions</h3>
+                <p class="card-text">
+                    ...
+                </p>
+            </div>
+        </div>
+    </div>
+  -->
+</div>

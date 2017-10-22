@@ -8,20 +8,30 @@
     <div class="header-actions">
         <a href="javascript://" class="nav-link nav-icon">
           <clr-icon shape="shopping-cart" class="is-solid has-outline"></clr-icon>
+          <span *ngIf="(dataService.cartTotalQty | async)>0" class="badge badge-red">{{dataService.cartTotalQty | async}}</span>
         </a>
         <a href="javascript://" class="nav-link">
-          <span class="nav-text">Guest</span>
+          <span class="nav-text" (click)="loginOpened = true">Guest</span>
         </a>
         <a href="javascript://" class="nav-link nav-icon">
           <clr-icon shape="user" class="is-solid has-outline"></clr-icon>
         </a>
-
-
-
     </div>
 </header>
   <div class="content-container">
     <div class="content-area">
+      <div>
+        <clr-modal [(clrModalOpen)]="loginOpened" [clrModalSize]="'sm'" id="account">
+          <h3 class="modal-title">I have a nice title</h3>
+          <div class="modal-body">
+              <p>But not much to say...</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-outline" (click)="loginOpened = false">Cancel</button>
+              <button type="button" class="btn btn-primary" (click)="loginOpened = false">Ok</button>
+          </div>
+        </clr-modal>
+      </div>
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -5,10 +5,12 @@
  */
 import { Component } from "@angular/core";
 
+import { ImagesGridComponent } from "../imagesGrid/imagesGrid.component";
+
 @Component({
     styleUrls: ['./home.component.scss'],
     templateUrl: './home.component.html',
 })
 export class HomeComponent {
-
+	grids = ['Track Purchases', 'Recent Searches', 'Search Suggestions'];
 }

@@ -8,12 +8,15 @@ import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
+import { ImagesGridComponent } from "./imagesGrid/imagesGrid.component";
+import { DataService } from "./data.service";
 
 @NgModule({
     declarations: [
         AppComponent,
         AboutComponent,
-        HomeComponent
+        HomeComponent,
+        ImagesGridComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -23,7 +26,7 @@ import { AboutComponent } from "./about/about.component";
         ClarityModule,
         ROUTING
     ],
-    providers: [],
+    providers: [DataService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
