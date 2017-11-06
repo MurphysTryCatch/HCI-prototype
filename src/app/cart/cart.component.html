@@ -1,0 +1,94 @@
+<!--
+  ~ Copyright (c) 2016 VMware, Inc. All Rights Reserved.
+  ~ This software is released under MIT license.
+  ~ The full license information can be found in LICENSE in the root directory of this project.
+  -->
+
+
+<clr-modal [(clrModalOpen)]="yolo" [clrModalSize]="'xl'">
+    <h3 class="modal-title">Shopping Cart</h3>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-7">
+          <div class="card" style="height:500px;">
+            <div class="card-block" style="padding: 0">
+              <clr-wizard #wizardmd [(clrWizardOpen)]="yolo" [clrWizardPreventModalAnimation]="true"
+              clrWizardSize="md"
+              class="clr-wizard--inline clr-wizard--no-shadow clr-wizard--no-title">
+                
+                <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+                <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+
+                <clr-wizard-page style="width: 100px;">
+                  <ng-template clrPageTitle>Shipping Info</ng-template>
+                </clr-wizard-page>
+              </clr-wizard>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <div class="card">
+            <div class="card-block">
+              <h3>Orders</h3>
+              <div *ngFor="let item of dataService.cart">
+                <img [src]="item.img_url" style="width: 50px;">
+                {{item.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="yolo = false; yoloChange.next(yolo)">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="yolo = false; yoloChange.next(yolo)">Ok</button>
+    </div>
+</clr-modal>
+<!--
+<clr-modal [(clrModalOpen)]="yolo">
+    <div class="modal-dialog modal-xl" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" class="close" type="button">
+                    <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                </button>
+                <h3 class="modal-title">Shopping Cart</h3>
+            </div>
+            <div class="modal-body">
+            
+              <div class="row">
+                <div class="col-xs-4">
+                  <div class="card">
+                    <div class="card-block">
+                      <clr-wizard #wizardxl>
+                        
+                        <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+                        <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+                        <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+                        <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+                        <clr-wizard-page>
+                          <ng-template clrPageTitle>Shipping Info</ng-template>
+                        </clr-wizard-page>
+                      </clr-wizard>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-8">
+                  <div class="card">
+                    <div class="card-block">
+                      <h3>Orders</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" type="button">Cancel</button>
+                <button class="btn btn-primary" type="button">Ok</button>
+            </div>
+        </div>
+    </div>
+</clr-modal>
+-->

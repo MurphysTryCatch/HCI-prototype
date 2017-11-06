@@ -15,6 +15,7 @@ export class DataService {
 
   getItems(): Item[] {
     return ITEMS;
+
   }
 
   addToCart(item: Item): void {

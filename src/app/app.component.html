@@ -7,7 +7,7 @@
     </div>
     <div class="header-actions">
         <a href="javascript://" class="nav-link nav-icon">
-          <clr-icon shape="shopping-cart" class="is-solid has-outline"></clr-icon>
+          <clr-icon shape="shopping-cart" class="is-solid has-outline" (click)="cartOpened = true"></clr-icon>
           <span *ngIf="(dataService.cartTotalQty | async)>0" class="badge badge-red">{{dataService.cartTotalQty | async}}</span>
         </a>
         <a href="javascript://" class="nav-link">
@@ -29,6 +29,197 @@
           <div class="modal-footer">
               <button type="button" class="btn btn-outline" (click)="loginOpened = false">Cancel</button>
               <button type="button" class="btn btn-primary" (click)="loginOpened = false">Ok</button>
+          </div>
+        </clr-modal>
+      </div>
+      <div>
+        <clr-modal [(clrModalOpen)]="cartOpened" [clrModalSize]="'xl'" id="cart">
+          <h3 class="modal-title">Shopping Cart</h3>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-7">
+                <div class="card" style="height:500px;">
+                  <div class="card-block" style="padding: 0">
+                    <clr-wizard #wizardmd [(clrWizardOpen)]="cartOpened" [clrWizardPreventModalAnimation]="true"
+                    [clrWizardForceForwardNavigation]="true" 
+                    clrWizardSize="md"
+                    class="clr-wizard--inline clr-wizard--no-shadow clr-wizard--no-title"
+                    style="height:498px;">
+                      <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+                      <clr-wizard-page>
+                        <ng-template clrPageTitle>
+                          <div class="row flex-items-xs-between">
+                            Shipping Info
+                            <clr-icon shape="circle" size="24"></clr-icon>
+                          </div>
+                        </ng-template>
+                        <ng-template clrPageNavTitle>
+                          Shipping Info
+                        </ng-template>
+                        <form>
+                          <section class="form-block">
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_1" placeholder="Full Name" size="35">
+                            </div>
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_2" placeholder="Address" size="35">
+                            </div>
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_3" placeholder="City" size="35">
+                            </div>
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_1" placeholder="State" size="10">
+                              <input type="text" id="aForm_1" placeholder="Zip Code" size="20">
+                            </div>
+                          </section>
+                        </form>
+                        <ng-template clrPageButtons>
+                          <clr-wizard-button [type]="'next'">Mail Options</clr-wizard-button>
+                        </ng-template>
+                      </clr-wizard-page>
+                      <clr-wizard-page>
+                        <ng-template clrPageTitle>
+                          <div class="row flex-items-xs-between">
+                            Mail Options
+                            <clr-icon shape="circle" size="24"></clr-icon>
+                          </div>
+                        </ng-template>
+                        <ng-template clrPageNavTitle>
+                          Mail Options
+                        </ng-template>
+                        <form>
+                          <section class="form-block">
+                            <div class="form-group" style="padding-left: 10px;">
+                                <div class="radio">
+                                    <input type="radio" name="gridRadios" id="checkrads_9">
+                                    <label for="checkrads_9">Free Shipping</label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="gridRadios" id="checkrads_10" checked>
+                                    <label for="checkrads_10">Two Day</label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="gridRadios" id="checkrads_11">
+                                    <label for="checkrads_11">Three Day</label>
+                                </div>
+                            </div>
+                          </section>
+                        </form>
+                        <ng-template clrPageButtons>
+                          <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+                          <clr-wizard-button [type]="'next'">Payment Info</clr-wizard-button>
+                        </ng-template>
+                      </clr-wizard-page>
+                      <clr-wizard-page>
+                        <ng-template clrPageTitle>
+                          <div class="row flex-items-xs-between">
+                            Payment Info
+                            <clr-icon shape="circle" size="24"></clr-icon>
+                          </div>
+                        </ng-template>
+                        <ng-template clrPageNavTitle>
+                          Payment Info
+                        </ng-template>
+                        <form>
+                          <section class="form-block">
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_1" placeholder="Name on Card" size="35">
+                            </div>
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_2" placeholder="Card Number" size="35">
+                            </div>
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_3" placeholder="Address" size="35">
+                            </div>
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_1" placeholder="State" size="10">
+                              <input type="text" id="aForm_1" placeholder="Zip Code" size="20">
+                            </div>
+                          </section>
+                        </form>
+                        <ng-template clrPageButtons>
+                          <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+                          <clr-wizard-button [type]="'next'">Confirmation</clr-wizard-button>
+                        </ng-template>
+                      </clr-wizard-page>
+                      <clr-wizard-page>
+                        <ng-template clrPageTitle>
+                          <div class="row flex-items-xs-between">
+                            Payment Option
+                            <clr-icon *ngIf="!paymentVerified" shape="circle" size="24"></clr-icon>
+                            <clr-icon *ngIf="paymentVerified" shape="success-standard" class="is-success" size="24"></clr-icon>
+                          </div>
+                        </ng-template>
+                        <ng-template clrPageNavTitle>
+                          Payment Option
+                        </ng-template>
+                        <form>
+                          <section class="form-block">
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_1" placeholder="Name on Card" size="35">
+                            </div>
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_2" placeholder="Card Number" size="35">
+                            </div>
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_3" placeholder="Address" size="35">
+                            </div>
+                            <div class="form-group" style="padding-left: 10px;">
+                              <input type="text" id="aForm_1" placeholder="State" size="10">
+                              <input type="text" id="aForm_1" placeholder="Zip Code" size="20">
+                            </div>
+                          </section>
+                        </form>
+                        <ng-template clrPageButtons>
+                          <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+                          <clr-wizard-button *ngIf="!paymentVerified" [type]="'next'" class="btn btn-primary btn-icon"(click)="paymentVerified = true">
+                            <clr-icon shape="shield-check" class="is-solid" size="24"></clr-icon>
+                            Verify
+                          </clr-wizard-button>
+                          <clr-wizard-button *ngIf="paymentVerified" [type]="'next'" class="btn btn-primary btn-icon">
+                            <clr-icon shape="shield-check" class="is-solid is-success" size="24"></clr-icon>
+                            Accepted
+                          </clr-wizard-button>
+                        </ng-template>
+                      </clr-wizard-page>
+                    </clr-wizard>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-5">
+                <div class="card" style="height:500px;">
+                  <div class="card-block">
+                    <div class="card-title" style="padding: 12px 19px 6px 24px;">
+                      <div class="row flex-items-xs-between" style="font-size:22px;">
+                        Orders
+                        <clr-icon *ngIf="!cartVerified" shape="circle" size="24"></clr-icon>
+                        <clr-icon *ngIf="cartVerified" shape="success-standard" class="is-success" size="24"></clr-icon>
+                      </div>
+                    </div>
+                    <div *ngFor="let key of dataService.cart" class="row flex-items-xs-between" style="height:50px;">
+                      <img [src]="key.img_url" style="width: 50px;">
+                      {{key.name}}
+                      
+                      <label>Qty</label>
+                      <div class="select">
+                        <select id="aForm_3">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                        </select>
+                      </div>
+                    </div>
+                    <button *ngIf="(dataService.cartTotalQty | async)>0" type="button" class="btn btn-primary" (click)="cartVerified = true" style="position: absolute; bottom: 24px; right: 25px;">Confirm Selection</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button *ngIf="!cartVerified || !paymentVerified" type="button" class="btn btn-outline" (click)="cartOpened = false;">Cancel</button>
+              <button *ngIf="cartVerified && paymentVerified" type="button" class="btn btn-warning" (click)="cartOpened = false;">Cancel</button>
+              <button *ngIf="cartVerified && paymentVerified" type="button" class="btn btn-success" (click)="cartOpened = false;">Purchase</button>
           </div>
         </clr-modal>
       </div>

@@ -57,6 +57,16 @@ import { Item } from '../item';
       <div class="modal-footer">
           <button type="button" class="btn btn-outline" (click)="showDetail = false">Cancel</button>
           <button type="button" class="btn btn-primary" (click)="addItem();">Add to Cart</button>
+          <div style="margin: 0px 12px 0px 12px">
+	          <div class="select" >
+	            <select id="aForm_3">
+	              <option>1</option>
+	              <option>2</option>
+	              <option>3</option>
+	              <option>4</option>
+	            </select>
+	          </div>
+	      </div>
       </div>
     </clr-modal>
 	`

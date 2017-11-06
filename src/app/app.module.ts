@@ -9,6 +9,7 @@ import { ROUTING } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { ImagesGridComponent } from "./imagesGrid/imagesGrid.component";
+import { CartComponent } from "./cart/cart.component";
 import { DataService } from "./data.service";
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DataService } from "./data.service";
         AppComponent,
         AboutComponent,
         HomeComponent,
-        ImagesGridComponent
+        ImagesGridComponent,
+        CartComponent
     ],
     imports: [
         BrowserAnimationsModule,
