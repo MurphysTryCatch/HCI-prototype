@@ -114,7 +114,8 @@
                         <ng-template clrPageTitle>
                           <div class="row flex-items-xs-between">
                             Payment Info
-                            <clr-icon shape="circle" size="24"></clr-icon>
+                            <clr-icon *ngIf="!paymentVerified" shape="circle" size="24"></clr-icon>
+                            <clr-icon *ngIf="paymentVerified" shape="success-standard" class="is-success" size="24"></clr-icon>
                           </div>
                         </ng-template>
                         <ng-template clrPageNavTitle>
@@ -123,50 +124,17 @@
                         <form>
                           <section class="form-block">
                             <div class="form-group" style="padding-left: 10px;">
-                              <input type="text" id="aForm_1" placeholder="Name on Card" size="35">
+                              <input type="text" id="aForm_1" placeholder="Name on Card" size="35" [disabled]="paymentVerified">
                             </div>
                             <div class="form-group" style="padding-left: 10px;">
-                              <input type="text" id="aForm_2" placeholder="Card Number" size="35">
+                              <input type="text" id="aForm_2" placeholder="Card Number" size="35" [disabled]="paymentVerified">
                             </div>
                             <div class="form-group" style="padding-left: 10px;">
-                              <input type="text" id="aForm_3" placeholder="Address" size="35">
+                              <input type="text" id="aForm_3" placeholder="Address" size="35" [disabled]="paymentVerified">
                             </div>
                             <div class="form-group" style="padding-left: 10px;">
-                              <input type="text" id="aForm_1" placeholder="State" size="10">
-                              <input type="text" id="aForm_1" placeholder="Zip Code" size="20">
-                            </div>
-                          </section>
-                        </form>
-                        <ng-template clrPageButtons>
-                          <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
-                          <clr-wizard-button [type]="'next'">Confirmation</clr-wizard-button>
-                        </ng-template>
-                      </clr-wizard-page>
-                      <clr-wizard-page>
-                        <ng-template clrPageTitle>
-                          <div class="row flex-items-xs-between">
-                            Payment Option
-                            <clr-icon *ngIf="!paymentVerified" shape="circle" size="24"></clr-icon>
-                            <clr-icon *ngIf="paymentVerified" shape="success-standard" class="is-success" size="24"></clr-icon>
-                          </div>
-                        </ng-template>
-                        <ng-template clrPageNavTitle>
-                          Payment Option
-                        </ng-template>
-                        <form>
-                          <section class="form-block">
-                            <div class="form-group" style="padding-left: 10px;">
-                              <input type="text" id="aForm_1" placeholder="Name on Card" size="35">
-                            </div>
-                            <div class="form-group" style="padding-left: 10px;">
-                              <input type="text" id="aForm_2" placeholder="Card Number" size="35">
-                            </div>
-                            <div class="form-group" style="padding-left: 10px;">
-                              <input type="text" id="aForm_3" placeholder="Address" size="35">
-                            </div>
-                            <div class="form-group" style="padding-left: 10px;">
-                              <input type="text" id="aForm_1" placeholder="State" size="10">
-                              <input type="text" id="aForm_1" placeholder="Zip Code" size="20">
+                              <input type="text" id="aForm_1" placeholder="State" size="10" [disabled]="paymentVerified">
+                              <input type="text" id="aForm_1" placeholder="Zip Code" size="20" [disabled]="paymentVerified">
                             </div>
                           </section>
                         </form>
